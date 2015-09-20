@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="Console">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<File name="MyFile" fileName="logs/app.log">
+			<PatternLayout
+				pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="TRACE">
+			<appender-ref ref="MyFile" level="TRACE"/>
+		</Root>
+		<logger name="com.org.log.com" level="TRACE" additivity="false">
+			<AppenderRef ref="Console" />
+			<appender-ref ref="MyFile" level="TRACE"/>
+		</logger>
+		<logger name="com.org.log.com.journaldev" level="TRACE"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</logger>
+		<logger name="com.org.log.net" level="ERROR" additivity="false">
+			<AppenderRef ref="Console" />
+		</logger>
+		<logger name="com.org.log.net.journaldev" level="ERROR"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</logger>
+	</Loggers>
+</Configuration>
